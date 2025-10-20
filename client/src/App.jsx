@@ -1,14 +1,12 @@
-import { useState } from 'react'
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import './App.css'
 
 function App() {
-  return (
-    <>
-     <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-    </>
-  )
+  return <BrowserRouter>
+    <Routes>
+      
+    </Routes>
+  </BrowserRouter>
 }
 
 export default App
