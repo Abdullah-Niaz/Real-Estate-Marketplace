@@ -1,3 +1,3 @@
 export const singup = (req, res) => {
-    res.send("singup")
+    console.log(req.body)
 }
