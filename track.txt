@@ -1,0 +1,11 @@
+Project : Real Estate 
+Day 1:
+	* Frontend Setup 
+		* install using vite 
+		* Creating pages like home/about/signup/signup/profile
+		* installing react-router-dom for routes
+		* configuring routes 
+		* making header component
+		* Instaling react-icons
+
+Day 2: 
