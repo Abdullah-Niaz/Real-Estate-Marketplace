@@ -14,3 +14,5 @@ Day 2:
 		* Database Connection 
 		* User controller/routes
 		* auth controller/routes/model 
+Day 3: 
+	* Create middleware and a function to handle possible error
