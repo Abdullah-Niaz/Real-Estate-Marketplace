@@ -9,3 +9,8 @@ Day 1:
 		* Instaling react-icons
 
 Day 2: 
+	* Backend
+		* Server Setup 
+		* Database Connection 
+		* User controller/routes
+		* auth controller/routes/model 
