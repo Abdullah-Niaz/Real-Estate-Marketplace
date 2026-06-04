@@ -16,3 +16,7 @@ Day 2:
 		* auth controller/routes/model 
 Day 3: 
 	* Create middleware and a function to handle possible error
+	* sinpu and it functionality
+
+Day 4:
+	* Create Sign in API Route 
