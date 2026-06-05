@@ -1,9 +1,14 @@
 import React from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { SignInStart, SignInSuccess, SignInFailure } from "../store/userSlice";
+import {
+  SignInStart,
+  SignInSuccess,
+  SignInFailure,
+} from "../redux/user/userSlice.js";
 import { useSelector } from "react-redux";
+import OAuth from "../components/OAuth.jsx";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -19,9 +24,10 @@ export default function SignIn() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       dispatch(SignInStart());
-      setLoading(true);
+
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
@@ -29,17 +35,18 @@ export default function SignIn() {
         },
         body: JSON.stringify(formData),
       });
+
       const data = await res.json();
+
       if (data.success === false) {
         dispatch(SignInFailure(data.message));
         return;
       }
+
       dispatch(SignInSuccess(data));
       navigate("/");
-      console.log(data);
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      dispatch(SignInFailure(error.message));
     }
   };
   return (
@@ -66,6 +73,7 @@ export default function SignIn() {
         >
           {loading ? "Loading..." : "Sign In"}
         </button>
+        <OAuth />
       </form>
       <div className="flex gap-2 mt-5">
         <p>Dontt have an Account?</p>
