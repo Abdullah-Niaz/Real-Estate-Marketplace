@@ -1,119 +1,105 @@
+# ABDULLAH ESTATE - MERN Real Estate Marketplace
 
-# MERN Real Estate Marketplace
+A modern, full-stack real estate marketplace built from scratch using the MERN stack (MongoDB, Express.js, React, Node.js). This application features a premium **glassmorphism UI layout**, advanced filters, multi-image parallel uploads, direct landlord contacting, and a responsive design.
 
-A modern, full-stack real estate marketplace built from scratch using the MERN stack (MongoDB, Express.js, React, Node.js). This application provides a comprehensive platform for users to list, browse, and search for properties with advanced features and a seamless user experience.
+---
 
------
+## 📸 Screenshots
+
+### Home Landing Page
+![Home Landing Page](./screenshots/home.png)
+
+### Advanced Search & Filter Sidebar
+![Search & Filters](./screenshots/search.png)
+
+### User Profile Dashboard
+![User Profile](./screenshots/profile.png)
+
+---
 
 ## ✨ Key Features
 
-  * **Advanced Authentication**: Secure user sign-up and sign-in functionality using JSON Web Tokens (JWT), with integrated Google OAuth for quick access.
-  * **Full CRUD Operations**: Users can create, read, update, and delete their own property listings.
-  * **User Profile Management**: A dedicated profile page where users can update their information, view their listings, delete their account, or sign out.
-  * **Dynamic Image Uploads**: Seamlessly upload multiple images for each property listing with storage handled by Firebase.
-  * **Advanced Search & Filtering**: A powerful search functionality that allows users to filter listings based on type (rent/sale), amenities (parking, furnished), and sort by price or creation date.
-  * **Contact Landlord**: An integrated feature for potential buyers or renters to contact the property owner directly via email.
-  * **Responsive Design**: A clean and modern UI built with Tailwind CSS that looks great on all devices.
-  * **State Management**: Efficient and predictable state management using Redux Toolkit and Redux Persist.
+* **Premium Glassmorphic Design**: Clean navbar blurs (`backdrop-blur-md`), translucent card structures, fixed radial mesh gradients, and professional spacing.
+* **Property Card Elevations**: Multi-featured listing cards featuring smooth hover zoom images and lift translations (`hover:-translate-y-2`).
+* **Advanced Authentication**: Secure signup and signin configurations using JSON Web Tokens (JWT) and Google OAuth integrations.
+* **Full CRUD Operations**: Users can list new properties, delete their entries, and update listing data (hydrates state dynamically).
+* **Cloudinary Image Upload**: Upload up to 6 high-res images in parallel per property listing with preview grids and custom delete triggers.
+* **Dynamic Search & Filtering**: Multi-criteria search panel filtering by type (rent/sale), amenities (parking, furnished), special offers, sorting (price, date), and paginated offsets.
+* **Contact Landlord**: Direct communication panel parsing landlord profiles and generating default draft templates via `mailto` triggers.
+* **State Persistence**: Efficient state management utilizing Redux Toolkit synced with Redux Persist.
 
------
+---
 
 ## 🛠️ Tech Stack
 
-  * **Frontend**: React, Redux Toolkit, React Router, Tailwind CSS
-  * **Backend**: Node.js, Express.js
-  * **Database**: MongoDB
-  * **Authentication**: JSON Web Tokens (JWT), bcryptjs, Google OAuth
-  * **Image Storage**: Firebase Storage
+* **Frontend**: React, Redux Toolkit, Redux Persist, React Router, Tailwind CSS, React Icons
+* **Backend**: Node.js, Express.js, cookie-parser
+* **Database**: MongoDB (Mongoose ORM)
+* **Authentication**: JWT, bcryptjs, Google OAuth
+* **Image Hosting**: Cloudinary API
 
------
+---
 
-## 🚀 Live Demo & Source Code
+## 🚀 Getting Started
 
-  * **Source Code**: [GitHub Repository](https://github.com/Abdullah-Niaz/Real-Estate-Marketplace)
-  * **Live Demo**: Check the GitHub repository for a live demo link.
-
------
-
-## ⚙️ Getting Started
-
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+Follow these steps to run a copy of the project on your local machine for development and testing.
 
 ### Prerequisites
 
-  * Node.js and npm (or yarn) installed
-  * MongoDB instance (local or cloud-based like MongoDB Atlas)
-  * Firebase account for image storage and Google OAuth
+* Node.js and npm installed
+* Local MongoDB instance (or MongoDB Atlas cluster)
+* Cloudinary credentials (cloud name, upload preset) for listings image uploads
 
 ### Installation & Setup
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Abdullah-Niaz/Real-Estate-Marketplace.git
+   cd Real-Estate-Marketplace
+   ```
 
-    ```sh
-    git clone https://github.com/Abdullah-Niaz/Real-Estate-Marketplace
-    cd mern-estate
-    ```
+2. **Install Backend Dependencies (Root Folder):**
+   ```bash
+   npm install
+   ```
 
-2.  **Install backend dependencies:**
-    Navigate to the `api` directory and install the required npm packages.
+3. **Install Frontend Dependencies (Client Folder):**
+   ```bash
+   cd client
+   npm install
+   cd ..
+   ```
 
-    ```sh
-    cd api
-    npm install
-    ```
+4. **Configure Environment Variables:**
+   * Create a `.env` file in the **root** folder:
+     ```env
+     PORT=3000
+     MONGO_URI=mongodb://localhost:27017/Real-Estate-Marketplace
+     JWT_SECRET=YOUR_JWT_SECRET_STRING
+     ```
+   * Create a `.env` file in the **client** folder:
+     ```env
+     VITE_FIREBASE_API_KEY=YOUR_FIREBASE_API_KEY
+     VITE_CLOUDINARY_CLOUD_NAME=YOUR_CLOUDINARY_CLOUD_NAME
+     VITE_CLOUDINARY_UPLOAD_PRESET=YOUR_CLOUDINARY_UPLOAD_PRESET
+     ```
 
-3.  **Install frontend dependencies:**
-    Navigate to the `client` directory and install the required npm packages.
+5. **Populate Database (Seed Script):**
+   To seed the database with a test landlord user (`landlord@example.com` / `password123`) and 7 featured listings, run the seed script from the root folder:
+   ```bash
+   npm run seed
+   ```
+   *(Ensure you have registered `"seed": "node api/seed.js"` under the scripts in your root `package.json`, or run `node api/seed.js` directly)*
 
-    ```sh
-    cd ../client
-    npm install
-    ```
-
-4.  **Set up Environment Variables:**
-    In the `api` directory, create a `.env` file. Copy the contents of `.env.example` (if available) or add the following variables. **Do not share your `.env` file.**
-
-    ```env
-    MONGO_URI=<YOUR_MONGODB_CONNECTION_STRING>
-    JWT_SECRET=<YOUR_JWT_SECRET>
-    ```
-
-    In the `client` directory, create a `.env` file and add your Firebase configuration details:
-
-    ```env
-    VITE_FIREBASE_API_KEY=<YOUR_FIREBASE_API_KEY>
-    ```
-
-5.  **Run the application:**
-
-      * To start the backend server, run the following command from the `api` directory:
-
-        ```sh
-        npm run dev
-        ```
-
-        The server will start on `http://localhost:3000`.
-
-      * To start the frontend development server, run the following command from the `client` directory:
-
-        ```sh
-        npm run dev
-        ```
-
-        The React app will be available at `http://localhost:5173`.
-
------
-
-## 🚢 Deployment
-
-This application is configured for easy deployment on platforms like **Render**.
-
-1.  Push your code to a GitHub repository.
-2.  On Render, create a new "Web Service".
-3.  Connect your GitHub repository.
-4.  Configure the build and start commands:
-      * **Root Directory**: `api`
-      * **Build Command**: `npm install`
-      * **Start Command**: `npm start`
-5.  Add your environment variables from the `.env` file to the Render dashboard.
-6.  For the client, you can deploy it as a static site.
+6. **Run the Application:**
+   * **Backend server** (run from root folder):
+     ```bash
+     npm run dev
+     ```
+     The backend API will run at `http://localhost:3000`.
+   * **Frontend server** (run from client folder):
+     ```bash
+     cd client
+     npm run dev
+     ```
+     The React application will run at `http://localhost:5173`.
