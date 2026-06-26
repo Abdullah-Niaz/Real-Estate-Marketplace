@@ -154,16 +154,17 @@ export default function CreateListing() {
   };
 
   return (
-    <main className="p-3 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">
+    <main className="max-w-4xl mx-auto bg-white/40 backdrop-blur-md border border-white/50 shadow-md rounded-3xl mt-10 mb-20 p-8 sm:p-10">
+      <h1 className="text-3xl font-extrabold text-center text-zinc-900 tracking-tight mb-8">
         Create a Listing
       </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-6">
-        <div className="flex flex-col gap-4 flex-1">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-8">
+        {/* Left column */}
+        <div className="flex flex-col gap-5 flex-1">
           <input
             type="text"
-            placeholder="Name"
-            className="border p-3 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-slate-500 outline-none"
+            placeholder="Property Name"
+            className="border border-white/50 p-3.5 rounded-xl bg-white/30 backdrop-blur-sm text-sm focus:border-zinc-300 focus:bg-white/80 outline-none transition duration-200"
             id="name"
             maxLength="62"
             minLength="10"
@@ -173,8 +174,8 @@ export default function CreateListing() {
           />
           <textarea
             type="text"
-            placeholder="Description"
-            className="border p-3 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-slate-500 outline-none"
+            placeholder="Property Description"
+            className="border border-white/50 p-3.5 rounded-xl bg-white/30 backdrop-blur-sm text-sm focus:border-zinc-300 focus:bg-white/80 outline-none transition duration-200 min-h-[120px]"
             id="description"
             required
             onChange={handleChange}
@@ -183,65 +184,67 @@ export default function CreateListing() {
           <input
             type="text"
             placeholder="Address"
-            className="border p-3 rounded-lg bg-white shadow-sm focus:ring-2 focus:ring-slate-500 outline-none"
+            className="border border-white/50 p-3.5 rounded-xl bg-white/30 backdrop-blur-sm text-sm focus:border-zinc-300 focus:bg-white/80 outline-none transition duration-200"
             id="address"
             required
             onChange={handleChange}
             value={formData.address}
           />
-          <div className="flex gap-6 flex-wrap">
+          
+          <div className="flex gap-5 flex-wrap my-2">
             <div className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 id="sale"
-                className="w-5 h-5 accent-slate-700"
+                className="w-4 h-4 accent-zinc-950 cursor-pointer"
                 onChange={handleChange}
                 checked={formData.type === "sale"}
               />
-              <span className="font-medium text-slate-700">Sell</span>
+              <span className="text-sm font-semibold text-zinc-700">Sell</span>
             </div>
             <div className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 id="rent"
-                className="w-5 h-5 accent-slate-700"
+                className="w-4 h-4 accent-zinc-950 cursor-pointer"
                 onChange={handleChange}
                 checked={formData.type === "rent"}
               />
-              <span className="font-medium text-slate-700">Rent</span>
+              <span className="text-sm font-semibold text-zinc-700">Rent</span>
             </div>
             <div className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 id="parking"
-                className="w-5 h-5 accent-slate-700"
+                className="w-4 h-4 accent-zinc-950 cursor-pointer"
                 onChange={handleChange}
                 checked={formData.parking}
               />
-              <span className="font-medium text-slate-700">Parking spot</span>
+              <span className="text-sm font-semibold text-zinc-700">Parking Spot</span>
             </div>
             <div className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 id="furnished"
-                className="w-5 h-5 accent-slate-700"
+                className="w-4 h-4 accent-zinc-950 cursor-pointer"
                 onChange={handleChange}
                 checked={formData.furnished}
               />
-              <span className="font-medium text-slate-700">Furnished</span>
+              <span className="text-sm font-semibold text-zinc-700">Furnished</span>
             </div>
             <div className="flex gap-2 items-center">
               <input
                 type="checkbox"
                 id="offer"
-                className="w-5 h-5 accent-slate-700"
+                className="w-4 h-4 accent-zinc-950 cursor-pointer"
                 onChange={handleChange}
                 checked={formData.offer}
               />
-              <span className="font-medium text-slate-700">Offer</span>
+              <span className="text-sm font-semibold text-zinc-700">Special Offer</span>
             </div>
           </div>
-          <div className="flex flex-wrap gap-6 mt-2">
+
+          <div className="flex flex-wrap gap-5 mt-2">
             <div className="flex items-center gap-2">
               <input
                 type="number"
@@ -249,11 +252,11 @@ export default function CreateListing() {
                 min="1"
                 max="10"
                 required
-                className="p-3 border border-gray-300 rounded-lg w-20 focus:ring-2 focus:ring-slate-500 outline-none"
+                className="p-3 border border-white/50 rounded-xl w-20 text-sm focus:border-zinc-300 focus:bg-white/80 bg-white/30 backdrop-blur-sm outline-none transition"
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
-              <span className="font-medium text-slate-700">Beds</span>
+              <span className="text-xs font-bold text-zinc-500 uppercase tracking-wide">Beds</span>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -262,11 +265,11 @@ export default function CreateListing() {
                 min="1"
                 max="10"
                 required
-                className="p-3 border border-gray-300 rounded-lg w-20 focus:ring-2 focus:ring-slate-500 outline-none"
+                className="p-3 border border-white/50 rounded-xl w-20 text-sm focus:border-zinc-300 focus:bg-white/80 bg-white/30 backdrop-blur-sm outline-none transition"
                 onChange={handleChange}
                 value={formData.bathrooms}
               />
-              <span className="font-medium text-slate-700">Baths</span>
+              <span className="text-xs font-bold text-zinc-500 uppercase tracking-wide">Baths</span>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -275,14 +278,14 @@ export default function CreateListing() {
                 min="50"
                 max="10000000"
                 required
-                className="p-3 border border-gray-300 rounded-lg w-24 focus:ring-2 focus:ring-slate-500 outline-none"
+                className="p-3 border border-white/50 rounded-xl w-28 text-sm focus:border-zinc-300 focus:bg-white/80 bg-white/30 backdrop-blur-sm outline-none transition"
                 onChange={handleChange}
                 value={formData.regularPrice}
               />
-              <div className="flex flex-col items-center">
-                <span className="font-medium text-slate-700">Regular price</span>
+              <div className="flex flex-col">
+                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wide">Reg. Price</span>
                 {formData.type === "rent" && (
-                  <span className="text-xs text-slate-500">($ / Month)</span>
+                  <span className="text-[9px] text-zinc-400 font-semibold uppercase tracking-wider">($ / Month)</span>
                 )}
               </div>
             </div>
@@ -294,31 +297,36 @@ export default function CreateListing() {
                   min="0"
                   max="10000000"
                   required
-                  className="p-3 border border-gray-300 rounded-lg w-24 focus:ring-2 focus:ring-slate-500 outline-none"
+                  className="p-3 border border-white/50 rounded-xl w-28 text-sm focus:border-zinc-300 focus:bg-white/80 bg-white/30 backdrop-blur-sm outline-none transition"
                   onChange={handleChange}
                   value={formData.discountPrice}
                 />
-                <div className="flex flex-col items-center">
-                  <span className="font-medium text-slate-700">Discounted price</span>
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold text-zinc-500 uppercase tracking-wide">Disc. Price</span>
                   {formData.type === "rent" && (
-                    <span className="text-xs text-slate-500">($ / Month)</span>
+                    <span className="text-[9px] text-zinc-400 font-semibold uppercase tracking-wider">($ / Month)</span>
                   )}
                 </div>
               </div>
             )}
           </div>
         </div>
-        <div className="flex flex-col flex-1 gap-4">
-          <p className="font-semibold text-slate-800">
-            Images:
-            <span className="font-normal text-gray-600 ml-2">
-              The first image will be the cover (max 6)
+
+        {/* Right column */}
+        <div className="flex flex-col flex-1 gap-5">
+          <div>
+            <p className="font-bold text-zinc-800 text-sm">
+              Property Images:
+            </p>
+            <span className="text-xs text-zinc-400 font-medium">
+              First image is the cover (max 6 images total).
             </span>
-          </p>
-          <div className="flex gap-4">
+          </div>
+
+          <div className="flex gap-3">
             <input
               onChange={(e) => setFiles(e.target.files)}
-              className="p-3 border border-gray-300 rounded w-full bg-white shadow-sm focus:outline-none cursor-pointer"
+              className="p-3 border border-white/50 bg-white/20 backdrop-blur-sm rounded-xl w-full text-xs text-zinc-500 focus:outline-none cursor-pointer"
               type="file"
               id="images"
               accept="image/*"
@@ -328,41 +336,50 @@ export default function CreateListing() {
               type="button"
               disabled={uploading}
               onClick={handleImageSubmit}
-              className="p-3 text-green-700 border border-green-700 rounded uppercase hover:bg-green-700 hover:text-white transition duration-300 disabled:opacity-85"
+              className="p-3 px-5 text-emerald-700 border border-emerald-600/80 rounded-xl uppercase text-xs font-bold tracking-wider hover:bg-emerald-700 hover:text-white transition duration-300 disabled:opacity-80 cursor-pointer shrink-0"
             >
               {uploading ? "Uploading..." : "Upload"}
             </button>
           </div>
-          <p className="text-red-700 text-sm">
-            {imageUploadError && imageUploadError}
-          </p>
-          {formData.imageUrls.length > 0 &&
-            formData.imageUrls.map((url, index) => (
-              <div
-                key={url}
-                className="flex justify-between p-3 border items-center bg-slate-50 rounded-lg shadow-sm"
-              >
-                <img
-                  src={url}
-                  alt="listing image"
-                  className="w-20 h-20 object-cover rounded"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveImage(index)}
-                  className="p-3 text-red-700 rounded-lg uppercase hover:opacity-75 font-semibold text-sm cursor-pointer"
+          
+          {imageUploadError && (
+            <p className="text-red-600 text-xs font-semibold">{imageUploadError}</p>
+          )}
+
+          {formData.imageUrls.length > 0 && (
+            <div className="flex flex-col gap-3 max-h-[300px] overflow-y-auto pr-1">
+              {formData.imageUrls.map((url, index) => (
+                <div
+                  key={url}
+                  className="flex justify-between p-3 border border-white/40 items-center bg-white/20 backdrop-blur-sm rounded-2xl shadow-sm hover:bg-white/40 transition-all duration-300"
                 >
-                  Delete
-                </button>
-              </div>
-            ))}
+                  <img
+                    src={url}
+                    alt="listing preview"
+                    className="w-16 h-16 object-cover rounded-xl border border-white/40 shadow-sm"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveImage(index)}
+                    className="text-red-500 uppercase font-bold text-[10px] tracking-wide hover:underline cursor-pointer p-2"
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
           <button
             disabled={loading || uploading}
-            className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80 transition duration-300 font-semibold"
+            className="p-3.5 bg-zinc-900 text-white rounded-xl uppercase hover:bg-zinc-950 transition duration-300 disabled:opacity-80 font-bold text-xs tracking-wider shadow-sm mt-2 cursor-pointer"
           >
-            {loading ? "Creating..." : "Create listing"}
+            {loading ? "Creating listing..." : "Create listing"}
           </button>
-          {error && <p className="text-red-700 text-sm text-center">{error}</p>}
+          
+          {error && (
+            <p className="text-red-600 text-xs font-semibold text-center mt-2">{error}</p>
+          )}
         </div>
       </form>
     </main>

@@ -26,52 +26,70 @@ export default function Header() {
   }, [location.search]);
 
   return (
-    <header className="bg-slate-200 shadow-md">
-      <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
+    <header className="bg-white/60 backdrop-blur-md sticky top-0 z-50 border-b border-white/50 shadow-sm">
+      <div className="flex justify-between items-center max-w-6xl mx-auto p-4 px-6">
         <Link to="/">
-          <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-            <span className="text-slate-500">Abdullah-</span>
-            <span className="text-slate-700"> Estate</span>
+          <h1 className="font-bold text-base sm:text-lg tracking-tight flex items-center mb-0.5">
+            <span className="text-zinc-900 font-extrabold">ABDULLAH</span>
+            <span className="text-zinc-400 font-light ml-1">ESTATE</span>
           </h1>
         </Link>
         <form
           onSubmit={handleSubmit}
-          className="bg-slate-100 p-3 rounded-lg flex items-center"
+          className="bg-white/40 backdrop-blur-sm border border-white/50 px-4 py-2 rounded-full flex items-center focus-within:border-zinc-300 focus-within:bg-white/80 transition-all duration-300 w-32 sm:w-72 shadow-sm"
         >
           <input
             type="text"
-            placeholder="Search.."
-            className="bg-transparent focus:outline-none w-24 sm:w-64"
+            placeholder="Search properties..."
+            className="bg-transparent focus:outline-none w-full text-sm text-zinc-800 placeholder-zinc-400"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit" className="focus:outline-none">
-            <FaSearch className="text-slate-600 cursor-pointer" />
+          <button type="submit" className="focus:outline-none ml-1 cursor-pointer">
+            <FaSearch className="text-zinc-400 hover:text-zinc-600 transition-colors text-xs sm:text-sm" />
           </button>
         </form>
-        <ul className="flex gap-4">
+        <ul className="flex items-center gap-4 sm:gap-6">
           <Link to="/">
-            <li className="hidden sm:inline text-slate-700 hover:underline">
+            <li className="hidden sm:inline text-zinc-600 hover:text-zinc-900 font-medium text-sm transition-colors cursor-pointer">
               Home
             </li>
           </Link>
 
+          <Link to="/search?type=rent">
+            <li className="hidden md:inline text-zinc-600 hover:text-zinc-900 font-medium text-sm transition-colors cursor-pointer">
+              Rentals
+            </li>
+          </Link>
+
+          <Link to="/search?type=sale">
+            <li className="hidden md:inline text-zinc-600 hover:text-zinc-900 font-medium text-sm transition-colors cursor-pointer">
+              Sales
+            </li>
+          </Link>
+
+          <Link to="/search?offer=true">
+            <li className="hidden sm:inline text-zinc-600 hover:text-zinc-900 font-medium text-sm transition-colors cursor-pointer">
+              Offers
+            </li>
+          </Link>
+
           <Link to="/about">
-            <li className="hidden sm:inline text-slate-700 hover:underline">
+            <li className="hidden sm:inline text-zinc-600 hover:text-zinc-900 font-medium text-sm transition-colors cursor-pointer">
               About
             </li>
           </Link>
           {currentUser ? (
-            <Link to="/profile">
+            <Link to="/profile" className="flex items-center">
               <img
                 src={currentUser.avatar}
                 alt="profile"
-                className="h-7 w-7 rounded-full object-cover cursor-pointer"
+                className="h-8 w-8 rounded-full object-cover border border-white/80 hover:border-zinc-300/40 transition-colors cursor-pointer"
               />
             </Link>
           ) : (
             <Link to="/sign-in">
-              <li className="hidden sm:inline text-slate-700 hover:underline">
+              <li className="text-zinc-600 hover:text-zinc-900 font-medium text-sm transition-colors cursor-pointer">
                 Sign in
               </li>
             </Link>

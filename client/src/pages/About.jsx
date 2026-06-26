@@ -2,13 +2,14 @@ import React from "react";
 
 export default function About() {
   return (
-    <div className="py-20 px-4 max-w-6xl mx-auto flex flex-col gap-6">
-      <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-slate-800 text-center md:text-left">
-        About <span className="text-slate-500">Abdullah Estate</span>
+    <div className="py-20 px-6 max-w-6xl mx-auto flex flex-col gap-8 bg-fafafa">
+      <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-900 tracking-tight text-center md:text-left">
+        About <span className="text-zinc-400 font-light">Abdullah Estate</span>
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6 items-center">
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-6 items-center">
         {/* Story details */}
-        <div className="flex flex-col gap-4 text-slate-700 leading-relaxed text-sm sm:text-base">
+        <div className="flex flex-col gap-5 text-zinc-500 leading-relaxed text-sm sm:text-base font-medium">
           <p>
             Welcome to Abdullah Estate, your premier destination for modern,
             reliable, and hassle-free real estate services. We specialize in
@@ -32,22 +33,22 @@ export default function About() {
         </div>
 
         {/* Feature stats showcase */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm flex flex-col justify-center items-center text-center">
-            <span className="text-3xl sm:text-4xl font-extrabold text-slate-700">10k+</span>
-            <span className="text-xs sm:text-sm text-slate-500 font-semibold mt-1">Properties Listed</span>
+        <div className="grid grid-cols-2 gap-6">
+          <div className="p-8 bg-white border border-zinc-100/80 rounded-3xl shadow-[0_2px_8px_-3px_rgba(0,0,0,0.04)] flex flex-col justify-center items-center text-center hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.06)] transition-all duration-300">
+            <span className="text-3xl sm:text-4xl font-extrabold text-zinc-800 tracking-tight">10k+</span>
+            <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-1.5">Properties</span>
           </div>
-          <div className="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm flex flex-col justify-center items-center text-center">
-            <span className="text-3xl sm:text-4xl font-extrabold text-slate-700">5k+</span>
-            <span className="text-xs sm:text-sm text-slate-500 font-semibold mt-1">Happy Clients</span>
+          <div className="p-8 bg-white border border-zinc-100/80 rounded-3xl shadow-[0_2px_8px_-3px_rgba(0,0,0,0.04)] flex flex-col justify-center items-center text-center hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.06)] transition-all duration-300">
+            <span className="text-3xl sm:text-4xl font-extrabold text-zinc-800 tracking-tight">5k+</span>
+            <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-1.5">Happy Clients</span>
           </div>
-          <div className="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm flex flex-col justify-center items-center text-center">
-            <span className="text-3xl sm:text-4xl font-extrabold text-slate-700">150+</span>
-            <span className="text-xs sm:text-sm text-slate-500 font-semibold mt-1">Cities Covered</span>
+          <div className="p-8 bg-white border border-zinc-100/80 rounded-3xl shadow-[0_2px_8px_-3px_rgba(0,0,0,0.04)] flex flex-col justify-center items-center text-center hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.06)] transition-all duration-300">
+            <span className="text-3xl sm:text-4xl font-extrabold text-zinc-800 tracking-tight">150+</span>
+            <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-1.5">Cities</span>
           </div>
-          <div className="p-6 bg-white border border-slate-100 rounded-2xl shadow-sm flex flex-col justify-center items-center text-center">
-            <span className="text-3xl sm:text-4xl font-extrabold text-slate-700">24/7</span>
-            <span className="text-xs sm:text-sm text-slate-500 font-semibold mt-1">Active Support</span>
+          <div className="p-8 bg-white border border-zinc-100/80 rounded-3xl shadow-[0_2px_8px_-3px_rgba(0,0,0,0.04)] flex flex-col justify-center items-center text-center hover:shadow-[0_8px_20px_-6px_rgba(0,0,0,0.06)] transition-all duration-300">
+            <span className="text-3xl sm:text-4xl font-extrabold text-zinc-800 tracking-tight">24/7</span>
+            <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-1.5">Support</span>
           </div>
         </div>
       </div>

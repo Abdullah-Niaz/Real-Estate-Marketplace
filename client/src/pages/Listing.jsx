@@ -61,25 +61,25 @@ export default function Listing() {
     }
   };
 
-  if (loading) return <p className="text-center my-7 text-2xl">Loading...</p>;
+  if (loading) return <p className="text-center my-20 text-lg font-bold text-zinc-450 uppercase tracking-widest animate-pulse">Loading...</p>;
   if (error)
     return (
-      <p className="text-center my-7 text-2xl text-red-700">
+      <p className="text-center my-20 text-lg font-bold text-red-600 uppercase tracking-widest">
         Something went wrong!
       </p>
     );
 
   return (
-    <main>
+    <main className="pb-20">
       {listing && (
         <div>
           {/* Custom Slider */}
-          <div className="relative w-full h-[300px] sm:h-[550px] overflow-hidden bg-slate-900 group">
+          <div className="relative w-full h-[320px] sm:h-[600px] overflow-hidden bg-zinc-950 group">
             {listing.imageUrls.map((url, index) => (
               <div
                 key={url}
-                className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${
-                  index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                className={`absolute inset-0 w-full h-full transition-all duration-1000 ease-out ${
+                  index === currentSlide ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
                 }`}
               >
                 <img
@@ -95,27 +95,27 @@ export default function Listing() {
               <>
                 <button
                   onClick={prevSlide}
-                  className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full z-20 cursor-pointer focus:outline-none transition duration-300"
+                  className="absolute top-1/2 left-6 -translate-y-1/2 bg-white/90 hover:bg-white text-zinc-800 p-3.5 rounded-full z-20 cursor-pointer focus:outline-none transition-all duration-300 shadow-lg backdrop-blur-sm opacity-0 group-hover:opacity-100"
                 >
-                  <FaChevronLeft size={20} />
+                  <FaChevronLeft size={16} />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full z-20 cursor-pointer focus:outline-none transition duration-300"
+                  className="absolute top-1/2 right-6 -translate-y-1/2 bg-white/90 hover:bg-white text-zinc-800 p-3.5 rounded-full z-20 cursor-pointer focus:outline-none transition-all duration-300 shadow-lg backdrop-blur-sm opacity-0 group-hover:opacity-100"
                 >
-                  <FaChevronRight size={20} />
+                  <FaChevronRight size={16} />
                 </button>
 
                 {/* Slider Indicators */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
                   {listing.imageUrls.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
+                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                         index === currentSlide
-                          ? "bg-white scale-110"
-                          : "bg-white/50 hover:bg-white/80"
+                          ? "bg-white scale-120 shadow-md"
+                          : "bg-white/40 hover:bg-white/70"
                       }`}
                     />
                   ))}
@@ -125,9 +125,9 @@ export default function Listing() {
           </div>
 
           {/* Share Button */}
-          <div className="fixed top-[13%] right-[3%] z-30 border rounded-full w-12 h-12 flex justify-center items-center bg-white cursor-pointer hover:bg-slate-100 shadow-md">
+          <div className="fixed top-[15%] right-[5%] z-30 border border-white/50 rounded-full w-11 h-11 flex justify-center items-center bg-white/60 backdrop-blur-sm cursor-pointer hover:bg-white hover:shadow-lg shadow transition duration-300">
             <FaShare
-              className="text-slate-500 hover:text-slate-700"
+              className="text-zinc-600 hover:text-zinc-900 text-sm"
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
                 setCopied(true);
@@ -138,64 +138,77 @@ export default function Listing() {
             />
           </div>
           {copied && (
-            <p className="fixed top-[21%] right-[5%] z-30 rounded-md bg-slate-100 p-2 text-xs font-semibold shadow-md">
+            <p className="fixed top-[23%] right-[5%] z-30 rounded-xl bg-zinc-900 text-white text-[10px] uppercase font-bold tracking-wider p-2.5 shadow-md">
               Link copied!
             </p>
           )}
 
           {/* Listing Details */}
-          <div className="flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4">
-            <h1 className="text-2xl sm:text-3xl font-semibold">
-              {listing.name} - ${" "}
-              {listing.offer
-                ? listing.discountPrice.toLocaleString("en-US")
-                : listing.regularPrice.toLocaleString("en-US")}
-              {listing.type === "rent" && " / Month"}
-            </h1>
-            <p className="flex items-center mt-2 gap-2 text-slate-600 text-sm">
-              <FaMapMarkerAlt className="text-green-700" />
-              {listing.address}
-            </p>
-            <div className="flex gap-4">
-              <p className="bg-red-900 w-full max-w-[200px] text-white text-center p-1.5 rounded-md font-semibold text-sm shadow">
+          <div className="flex flex-col max-w-4xl mx-auto p-6 sm:p-8 mt-10 gap-5 bg-white/40 backdrop-blur-md border border-white/50 shadow-md rounded-3xl">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+              <div className="flex flex-col gap-2">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight">
+                  {listing.name}
+                </h1>
+                <p className="flex items-center gap-1.5 text-zinc-500 font-semibold text-xs uppercase tracking-wide mt-1">
+                  <FaMapMarkerAlt className="text-zinc-400 shrink-0" />
+                  {listing.address}
+                </p>
+              </div>
+              <div className="text-left sm:text-right shrink-0">
+                <p className="text-2xl sm:text-3xl font-black text-zinc-900 tracking-tight">
+                  $
+                  {listing.offer
+                    ? listing.discountPrice.toLocaleString("en-US")
+                    : listing.regularPrice.toLocaleString("en-US")}
+                  {listing.type === "rent" && <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider ml-1">/ mo</span>}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-3 flex-wrap">
+              <p className="bg-zinc-900 text-white text-center px-4 py-2 rounded-full font-bold text-[10px] uppercase tracking-wider shadow-sm">
                 {listing.type === "rent" ? "For Rent" : "For Sale"}
               </p>
               {listing.offer && (
-                <p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1.5 rounded-md font-semibold text-sm shadow">
+                <p className="bg-emerald-700 text-white text-center px-4 py-2 rounded-full font-bold text-[10px] uppercase tracking-wider shadow-sm">
                   ${(listing.regularPrice - listing.discountPrice).toLocaleString("en-US")} OFF
                 </p>
               )}
             </div>
-            <p className="text-slate-800">
-              <span className="font-semibold text-black">Description - </span>
-              {listing.description}
-            </p>
-            <ul className="text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6 border-t border-b py-4 my-2 border-slate-200">
-              <li className="flex items-center gap-1.5 whitespace-nowrap">
-                <FaBed className="text-lg" />
+
+            <div className="text-zinc-700 leading-relaxed text-sm sm:text-base border-t border-white/40 pt-5">
+              <p className="font-bold text-zinc-900 text-sm uppercase tracking-wider mb-2">Description</p>
+              <p className="text-zinc-500 font-medium text-sm sm:text-base">{listing.description}</p>
+            </div>
+
+            <ul className="text-zinc-500 font-bold text-[11px] flex flex-wrap items-center gap-4 sm:gap-8 border-t border-b py-5 border-white/40 my-2 uppercase tracking-widest">
+              <li className="flex items-center gap-2 whitespace-nowrap">
+                <FaBed className="text-zinc-400 text-sm" />
                 {listing.bedrooms > 1
-                  ? `${listing.bedrooms} beds`
-                  : `${listing.bedrooms} bed`}
+                  ? `${listing.bedrooms} Beds`
+                  : `${listing.bedrooms} Bed`}
               </li>
-              <li className="flex items-center gap-1.5 whitespace-nowrap">
-                <FaBath className="text-lg" />
+              <li className="flex items-center gap-2 whitespace-nowrap">
+                <FaBath className="text-zinc-400 text-sm" />
                 {listing.bathrooms > 1
-                  ? `${listing.bathrooms} baths`
-                  : `${listing.bathrooms} bath`}
+                  ? `${listing.bathrooms} Baths`
+                  : `${listing.bathrooms} Bath`}
               </li>
-              <li className="flex items-center gap-1.5 whitespace-nowrap">
-                <FaParking className="text-lg" />
-                {listing.parking ? "Parking spot" : "No Parking"}
+              <li className="flex items-center gap-2 whitespace-nowrap">
+                <FaParking className="text-zinc-400 text-sm" />
+                {listing.parking ? "Parking Spot" : "No Parking"}
               </li>
-              <li className="flex items-center gap-1.5 whitespace-nowrap">
-                <FaChair className="text-lg" />
+              <li className="flex items-center gap-2 whitespace-nowrap">
+                <FaChair className="text-zinc-400 text-sm" />
                 {listing.furnished ? "Furnished" : "Unfurnished"}
               </li>
             </ul>
+
             {currentUser && listing.userRef !== currentUser._id && !contact && (
               <button
                 onClick={() => setContact(true)}
-                className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3 transition duration-300 font-semibold mt-2"
+                className="bg-zinc-900 hover:bg-zinc-950 text-white rounded-xl uppercase hover:opacity-95 p-3.5 transition duration-300 font-bold text-xs tracking-wider shadow-sm mt-2 cursor-pointer"
               >
                 Contact landlord
               </button>
